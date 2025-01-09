@@ -1,0 +1,83 @@
+Write(Command ,0x11);//Sleep out, DC/DC converter, internal oscillator, panel scanning "enable"
+Delay(120);
+Write(Command ,0x35);
+Write(Parameter ,0x00);
+Write(Command ,0x3A);//COLMOD,interface pixel format
+Write(Parameter ,0x05);
+Write(Command ,0xB2); //porch setting,, default=0C/0C/00/33/33
+Write(Parameter ,0x5c); //back porch setting  0c
+Write(Parameter ,0x0c); //front porch setting 0c
+Write(Parameter ,0x00); //PSEN=0, disable seprate porch control
+Write(Parameter ,0x33); //back/front porch setting in idle mode
+Write(Parameter ,0x33); //back/front porch setting in partial mode
+Write(Command ,0xB7); //Gate Control for VGH and VGL setting, default=35
+Write(Parameter ,0x75);  //0x62
+Write(Command ,0xB3);
+Write(Parameter ,0x10);
+Write(Parameter ,0x05);
+Write(Parameter ,0x0E);
+Write(Command ,0xBB); //VCOMS setting (0.1~1.675 V), default=20
+Write (Parameter  ,0x12);    
+Write(Command ,0xC0); //LCM control, default=2C
+Write(Parameter ,0x2C); //XOR XBRG=36;XOR XMX=36 ;XOR inverse=21;
+Write(Parameter ,0xC2);
+Write(Parameter ,0x01);
+Write(Command ,0xC2); ///VDV and VRH command enable, default=01 or FF
+Write(Parameter ,0x01);
+Write(Command ,0xC3); //VRH set (VRH=GVDD), default=0B
+Write (Parameter  ,0x08);    
+Write(Command ,0xC4); //VDV set, default=20
+Write(Parameter ,0x20); //VDV=0v
+Write(Command ,0xC6);//FRCTRL=Frame Rate Control in Normal Mode , default=0F
+Write(Parameter ,0x0F); //FR in normal mode=60Hz
+Write(Command ,0xD0);//Power Control, default=A4/81
+Write(Parameter ,0xA4);//Constant
+Write(Parameter ,0xA1);//AVDD=6.8V;AVCL=-4.8V;VDDS=2.3V
+Write(Command ,0xE0);//PVGAMCTRL:Positive Voltage Gamma Control 
+Write(Parameter ,0xf0); //V63[7:4]=D(1101) & V0[3:0]=(0000),default=D/0 
+Write(Parameter ,0x1B); //V1[5:0]=7(000111),default=0 
+Write(Parameter ,0x1f); //V2[5:0]=E(001110),default=2 
+Write(Parameter ,0x10); //V4[4:0]=10(10000),default=7 
+Write(Parameter ,0x0a); //V6[4:0]=11(10001),default=B 
+Write(Parameter ,0x15); //J0P[5:4]=2(10) ,default=1 & V13[3:0]=A(1010) ,default=A 
+Write(Parameter ,0x3f); //V20[6:0]=36(0110110) ,default=31 
+Write(Parameter ,0x44); //V36[6:4]=4(100) ,default=5 & V27[2:0]=4(100) ,default=9 
+Write(Parameter ,0x51); //V43[6:0]=44(1000100) ,default=40 
+Write(Parameter ,0x3a); //J1P[5:4]=2(10) ,default=2 & V50[3:0]=8(1000) ,default=9 
+Write(Parameter ,0x15); //V57[4:0]=14(10100) ,default=12 
+Write(Parameter ,0x14); //V59[4:0]=13(10011) ,default=12 
+Write(Parameter ,0x2e); //V61[5:0]=14(010100),default=12 
+Write(Parameter ,0x30); //V62[5:0]=17(010111) ,default=17 
+Write(Command ,0xE1);//NVGAMCTRL:Negative Voltage Gamma Control 
+Write(Parameter ,0xf0); //V63[7:4]=D(1101) & V0[3:0]=(0000),default=D/0 
+Write(Parameter ,0x1B); //V1[5:0]=1(000001),default=0 
+Write(Parameter ,0x1f); //V2[5:0]=8(000100),default=2 
+Write(Parameter ,0x10); //V4[4:0]=1(01010),default=7 
+Write(Parameter ,0x0a); //V6[4:0]=1(01011),default=5 
+Write(Parameter ,0x15); //J0N[5:4]=2(10),default=2 & V13[3:0]=(1000),default=5 
+Write(Parameter ,0x3f); //V20[6:0]=32(0110010),default=2D 
+Write(Parameter ,0x44); //V36[6:4]=4(100),default=4 & V27[2:0]=4(100),default=4 
+Write(Parameter ,0x51); //V43[6:0]=46(1000110),default=44 
+Write(Parameter ,0x3a); //J1N[5:4]=2(10),default=1 & V50[3:0]=C(1100),default=C 
+Write(Parameter ,0x15); //V57[4:0]=18(11000),default=18 
+Write(Parameter ,0x14); //V59[4:0]=17(10111),default=16 
+Write(Parameter ,0x2e); //V61[5:0]=1A(011010),default=1C 
+Write(Parameter ,0x30); //V62[5:0]=1D(011011),default=1D
+Write(Command ,0xe4);//gate control for decrease consumption
+Write(Parameter ,0x1d);
+Write(Command ,0x29);//Display ON ,default= Display OFF
+Write(Command ,0x21);//Display inversion ON ,default=Display inversion OF
+Write(Command ,0xB2); //porch setting,, default=0C/0C/00/33/33
+Write(Parameter ,0x7f); //back porch setting  0c
+Write(Parameter ,0x7f); //front porch setting 0c
+Write(Parameter ,0x01); //PSEN=0, disable seprate porch control
+Write(Parameter ,0x33); //back/front porch setting in idle mode
+Write(Parameter ,0x33); //back/front porch setting in partial mode
+
+Write(Command ,0xB3);
+Write(Parameter ,0x11); //enable separate FR control
+Write(Parameter ,0x05);
+Write(Parameter ,0x0E);
+
+Write(Command ,0xC6);//FRCTRL=Frame Rate Control in Normal Mode , default=0F
+Write(Parameter ,0x1f); //FR in normal mode=39Hz
